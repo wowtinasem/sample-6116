@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한국진로진학연구원 — 우리 아이 맞춤 입시 전략</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css">
+<style>
+/* ============================================================
+   화이트라벨 브랜드 토큰 — 가맹 학원용은 이 변수만 교체하면 됨
+   ============================================================ */
+:root{
+  --brand-name: "한국진로진학연구원";
+  --navy:#0A2E5C; --navy-d:#07203F; --navy-l:#143C6E;
+  --gold:#C8A96A; --gold-d:#B5945A; --gold-ink:#3A2E12;
+  --warm:#FAF7F1; --cream:#F3EDE1; --line:#E7DFD0;
+  --slate:#5F6B7A; --ink:#2A2E35; --muted:#8A8270;
+  --green-bg:#E8F2EC; --green-tx:#2E7D5B;
+  --amber-bg:#FBF0DA; --amber-tx:#8A5B12;
+  --gray-bg:#EFEBE2; --gray-tx:#6B675E;
+  --serif:'Gowun Batang', serif;
+  --display:'Nanum Myeongjo', serif;
+  --sans:'Pretendard', -apple-system, sans-serif;
+  --shadow-sm:0 1px 2px rgba(10,46,92,.04), 0 2px 8px rgba(10,46,92,.04);
+  --shadow-md:0 4px 16px rgba(10,46,92,.08), 0 12px 32px rgba(10,46,92,.06);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--warm);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+.serif{font-family:var(--serif)}
+
+/* ---------- Header ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:100;transition:all .35s ease;background:rgba(250,247,241,0);}
+header.scrolled{background:rgba(250,247,241,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+.logo{font-family:var(--serif);font-size:21px;font-weight:700;color:var(--navy);letter-spacing:-.5px;display:flex;align-items:center;gap:9px}
+.logo .mark{width:30px;height:30px;border-radius:8px;background:var(--navy);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:15px;font-family:var(--sans)}
+.menu{display:flex;gap:34px;list-style:none}
+.menu a{font-size:15px;font-weight:500;color:var(--slate);position:relative;transition:color .2s}
+.menu a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--gold);transition:width .25s}
+.menu a:hover{color:var(--navy)}.menu a:hover::after{width:100%}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.btn{font-family:var(--sans);font-weight:600;border:none;cursor:pointer;border-radius:10px;transition:all .2s;font-size:14px;white-space:nowrap}
+.btn-login{background:transparent;color:var(--slate);border:1px solid var(--line);padding:9px 18px}
+.btn-login:hover{border-color:var(--navy);color:var(--navy)}
+.btn-cta{background:var(--gold);color:var(--gold-ink);padding:10px 20px;box-shadow:0 4px 14px rgba(200,169,106,.35)}
+.btn-cta:hover{background:var(--gold-d);transform:translateY(-1px);box-shadow:0 6px 18px rgba(200,169,106,.45)}
+.btn-cta:active{transform:translateY(0)}
+.hamburger{display:none;background:none;border:none;cursor:pointer;font-size:26px;color:var(--navy)}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;padding:160px 0 90px;overflow:hidden;background:
+   radial-gradient(ellipse 55% 50% at 82% 18%, rgba(200,169,106,.18), transparent 60%),
+   radial-gradient(ellipse 50% 60% at 8% 85%, rgba(10,46,92,.08), transparent 55%),
+   var(--warm)}
+.hero::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+   background-image:linear-gradient(rgba(10,46,92,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(10,46,92,.035) 1px,transparent 1px);
+   background-size:46px 46px;
+   -webkit-mask:radial-gradient(ellipse 80% 70% at 50% 40%,#000 30%,transparent 75%);
+   mask:radial-gradient(ellipse 80% 70% at 50% 40%,#000 30%,transparent 75%)}
+.hero .watermark{position:absolute;font-family:var(--serif);font-weight:700;color:rgba(10,46,92,.045);font-size:340px;line-height:1;top:-40px;left:-30px;z-index:0;pointer-events:none;user-select:none}
+.hero .wrap{position:relative;z-index:1}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--gold-d);letter-spacing:.5px;margin-bottom:22px;padding:6px 14px;background:#fff;border:1px solid var(--line);border-radius:30px}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.hero h1{font-family:var(--display);font-size:clamp(26px,3.3vw,40px);line-height:1.4;color:var(--navy);font-weight:800;letter-spacing:-1.5px;margin-bottom:22px;word-break:keep-all}
+.hero h1 em{font-style:normal;color:var(--gold-d);position:relative}
+.hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:10px;background:rgba(200,169,106,.22);z-index:-1}
+.hero p.lead{font-size:18px;color:var(--slate);margin-bottom:34px;max-width:480px}
+.hero-actions{display:flex;align-items:center;gap:16px;margin-bottom:34px;flex-wrap:wrap}
+.btn-hero{font-size:16px;padding:16px 30px;border-radius:12px}
+.btn-ghost{background:#fff;color:var(--navy);border:1px solid var(--line);font-weight:600;font-size:15px;padding:15px 24px;border-radius:12px;cursor:pointer;transition:all .2s}
+.btn-ghost:hover{border-color:var(--navy);box-shadow:var(--shadow-sm)}
+.tiers{display:flex;gap:10px}
+.tier{flex:1;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 12px;text-align:center;cursor:pointer;transition:all .22s}
+.tier:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--gold)}
+.tier .lv{font-size:13px;color:var(--muted);font-weight:500;margin-bottom:2px}
+.tier .nm{font-size:15px;font-weight:700;color:var(--navy)}
+.tier .nm small{display:block;font-size:11px;color:var(--gold-d);font-weight:600;margin-top:2px}
+/* hero visual */
+.hero-card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow-md);padding:24px;position:relative}
+.hero-card::before{content:"";position:absolute;inset:0;border-radius:20px;padding:1px;background:linear-gradient(140deg,rgba(200,169,106,.5),transparent 40%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.hc-top{display:flex;align-items:center;gap:10px;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:16px}
+.hc-av{width:42px;height:42px;border-radius:50%;background:var(--navy);color:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.hc-top .t{font-weight:700;color:var(--navy);font-size:15px}.hc-top .s{font-size:13px;color:var(--muted)}
+.hc-row{display:flex;align-items:center;justify-content:space-between;padding:11px 0;font-size:14px}
+.hc-row .lab{color:var(--slate)}
+.hc-bar{height:7px;border-radius:5px;background:var(--cream);overflow:hidden;width:120px}
+.hc-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--navy),var(--navy-l));border-radius:5px}
+.hc-score{font-weight:700;color:var(--navy)}
+.hc-tag{margin-top:14px;background:var(--green-bg);color:var(--green-tx);font-size:13px;font-weight:600;text-align:center;padding:9px;border-radius:10px}
+.hc-float{position:absolute;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-md);padding:12px 16px;font-size:13px;font-weight:600;color:var(--navy);display:flex;align-items:center;gap:8px}
+.hc-float .ic{color:var(--gold-d)}
+.hc-float.f1{top:-22px;right:-14px;animation:float 4s ease-in-out infinite}
+.hc-float.f2{bottom:-20px;left:-18px;animation:float 4s ease-in-out .8s infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+
+/* ---------- Trust strip ---------- */
+.trust{background:var(--navy);padding:22px 0}
+.trust-row{display:flex;justify-content:center;flex-wrap:wrap;gap:14px}
+.trust-item{display:flex;align-items:center;gap:8px;color:#D9E0EC;font-size:14px;font-weight:500}
+.trust-item .c{color:var(--gold)}
+.trust-sep{width:1px;background:rgba(255,255,255,.14)}
+
+/* ---------- Section base ---------- */
+section.block{padding:90px 0}
+.sec-head{text-align:center;max-width:660px;margin:0 auto 52px}
+.sec-tag{font-size:14px;font-weight:600;color:var(--gold-d);letter-spacing:.5px;margin-bottom:12px}
+.sec-head h2{font-family:var(--serif);font-size:34px;line-height:1.4;color:var(--navy);font-weight:700;letter-spacing:-.5px}
+.sec-head p{margin-top:14px;font-size:17px;color:var(--slate)}
+
+/* pain points */
+.pain{background:var(--cream)}
+.pain-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pain-card{background:var(--warm);border:1px solid var(--line);border-radius:16px;padding:26px 22px;transition:all .25s}
+.pain-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.pain-card .q{font-size:26px;color:var(--gold);font-family:var(--serif);line-height:1}
+.pain-card p{margin-top:14px;font-size:16px;color:var(--ink);font-weight:500;line-height:1.55}
+
+/* generator */
+.gen-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.gcard{background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px 26px;transition:transform .28s,box-shadow .28s,border-color .28s;position:relative;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;color:inherit}
+.gcard::after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--gold);transform:scaleY(0);transform-origin:top;transition:transform .3s}
+.gcard:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:var(--gold)}
+.gcard:hover::after{transform:scaleY(1)}
+.gcard .ribbon{position:absolute;top:20px;right:-44px;width:150px;transform:rotate(45deg);background:var(--gold);color:var(--gold-ink);font-size:11px;font-weight:700;letter-spacing:1px;text-align:center;padding:6px 0;box-shadow:0 2px 6px rgba(10,46,92,.18)}
+.gcard .badge{display:inline-block;font-size:12px;font-weight:700;padding:5px 12px;border-radius:20px;margin-bottom:16px;align-self:flex-start}
+.b-mid{background:var(--green-bg);color:var(--green-tx)}
+.b-easy{background:#EAF1F8;color:#2C5C92}
+.b-hard{background:#F3ECF8;color:#6A4A92}
+.gcard h3{font-size:21px;color:var(--navy);font-weight:700;margin-bottom:8px;font-family:var(--serif)}
+.gcard .desc{font-size:15px;color:var(--slate);min-height:66px}
+.gcard .ex{margin-top:16px;padding-top:16px;border-top:1px dashed var(--line);font-size:13.5px;color:var(--muted)}
+.gcard .ex b{color:var(--navy);font-weight:600}
+.gcard .action{margin-top:20px;display:flex;align-items:center;justify-content:space-between;background:var(--cream);border-radius:11px;padding:13px 18px;font-weight:700;font-size:14.5px;color:var(--navy);transition:background .25s,color .25s}
+.gcard:hover .action{background:var(--navy);color:#fff}
+.gcard .action .arrow{font-size:17px;transition:transform .25s}
+.gcard:hover .action .arrow{transform:translateX(5px)}
+
+/* analysis split */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.acard{border-radius:18px;padding:34px 30px;border:1px solid var(--line)}
+.acard.free{background:#fff}
+.acard.paid{background:var(--navy);border-color:var(--navy)}
+.acard .pill{display:inline-block;font-size:12px;font-weight:700;padding:5px 13px;border-radius:20px;margin-bottom:18px}
+.acard.free .pill{background:var(--green-bg);color:var(--green-tx)}
+.acard.paid .pill{background:var(--gold);color:var(--gold-ink)}
+.acard h3{font-size:23px;font-weight:700;margin-bottom:12px;font-family:var(--serif)}
+.acard.free h3{color:var(--navy)} .acard.paid h3{color:#fff}
+.acard p{font-size:15px;margin-bottom:20px}
+.acard.free p{color:var(--slate)} .acard.paid p{color:#C4D0E0}
+.acard ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.acard li{display:flex;align-items:flex-start;gap:10px;font-size:15px}
+.acard.free li{color:var(--ink)} .acard.paid li{color:#E4EAF2}
+.acard li .ck{flex-shrink:0;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;margin-top:3px}
+.acard.free li .ck{background:var(--green-bg);color:var(--green-tx)}
+.acard.paid li .ck{background:var(--gold);color:var(--gold-ink)}
+.acard .go{margin-top:24px;font-weight:600;font-size:15px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.acard.free .go{color:var(--navy)} .acard.paid .go{color:var(--gold)}
+
+/* CTA banner */
+.cta-band{background:linear-gradient(135deg,var(--navy-d),var(--navy) 55%,var(--navy-l));position:relative;overflow:hidden;border-radius:24px;padding:60px 50px;text-align:center;margin:0 auto}
+.cta-band::before{content:"";position:absolute;top:-40%;right:-10%;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(200,169,106,.22),transparent 70%)}
+.cta-band h2{font-family:var(--serif);font-size:32px;color:#fff;font-weight:700;line-height:1.45;position:relative;letter-spacing:-.5px}
+.cta-band h2 em{font-style:normal;color:var(--gold)}
+.cta-band p{color:#BCC9DB;font-size:17px;margin:14px 0 30px;position:relative}
+.cta-band .btn-cta{font-size:17px;padding:16px 36px;position:relative}
+
+/* testimonials */
+.testi{background:var(--cream)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.tcard{background:var(--warm);border:1px solid var(--line);border-radius:18px;padding:28px 26px;display:flex;flex-direction:column}
+.tcard .stars{color:var(--gold);font-size:15px;letter-spacing:2px;margin-bottom:14px}
+.tcard .body{font-size:15.5px;color:var(--ink);line-height:1.7;flex:1}
+.tcard .who{display:flex;align-items:center;gap:11px;margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
+.tcard .who .av{width:40px;height:40px;border-radius:50%;background:var(--navy);color:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px}
+.tcard .who .nm{font-weight:700;color:var(--navy);font-size:14px}
+.tcard .who .role{font-size:12.5px;color:var(--muted)}
+.tcard .result{margin-top:14px;background:var(--green-bg);color:var(--green-tx);font-size:13px;font-weight:700;padding:7px 12px;border-radius:9px;text-align:center}
+
+/* process */
+.proc{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative}
+.pstep{text-align:center;position:relative}
+.pstep .n{width:62px;height:62px;border-radius:50%;background:#fff;border:2px solid var(--gold);color:var(--navy);font-family:var(--serif);font-weight:700;font-size:24px;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;position:relative;z-index:2}
+.pstep h4{font-size:18px;color:var(--navy);font-weight:700;margin-bottom:7px}
+.pstep p{font-size:14.5px;color:var(--slate)}
+.proc::before{content:"";position:absolute;top:31px;left:12%;right:12%;height:2px;background:repeating-linear-gradient(90deg,var(--gold) 0 8px,transparent 8px 16px);z-index:1}
+
+/* courses / info */
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.ccard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px;transition:transform .25s,box-shadow .25s,border-color .25s;position:relative;overflow:hidden;display:flex;flex-direction:column;color:inherit}
+.ccard::after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--gold);transform:scaleY(0);transform-origin:top;transition:transform .3s}
+.ccard:hover{box-shadow:var(--shadow-md);transform:translateY(-3px)}
+a.ccard{cursor:pointer}
+a.ccard:hover{transform:translateY(-5px);border-color:var(--gold)}
+a.ccard:hover::after{transform:scaleY(1)}
+.ccard.soon{opacity:.62}
+.ccard .ic{width:46px;height:46px;border-radius:12px;background:var(--cream);color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px}
+.ccard h4{font-size:18px;color:var(--navy);font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ccard .st{font-size:11px;font-weight:700;padding:3px 9px;border-radius:14px}
+.st-run{background:var(--amber-bg);color:var(--amber-tx)}
+.st-soon{background:var(--gray-bg);color:var(--gray-tx)}
+.ccard p{font-size:14.5px;color:var(--slate);flex:1}
+.ccard .act{margin-top:20px;display:flex;align-items:center;justify-content:space-between;background:var(--cream);border-radius:10px;padding:12px 16px;font-weight:700;font-size:14px;color:var(--navy);transition:background .25s,color .25s}
+a.ccard:hover .act{background:var(--navy);color:#fff}
+.ccard .act .arrow{font-size:16px;transition:transform .25s}
+a.ccard:hover .act .arrow{transform:translateX(5px)}
+
+/* final cta */
+.final{padding:0 0 90px}
+
+/* footer */
+footer{background:var(--navy-d);color:#9FB0C6;padding:60px 0 30px}
+.foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:36px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,.1)}
+.foot-brand .logo{color:#fff}.foot-brand .logo .mark{background:var(--gold);color:var(--navy)}
+.foot-brand p{margin-top:16px;font-size:14px;line-height:1.7;max-width:280px}
+.foot-col h5{color:#fff;font-size:14px;font-weight:700;margin-bottom:16px}
+.foot-col a{display:block;font-size:14px;margin-bottom:11px;transition:color .2s}
+.foot-col a:hover{color:var(--gold)}
+.partner-box{background:rgba(255,255,255,.05);border:1px solid rgba(200,169,106,.3);border-radius:14px;padding:20px}
+.partner-box h5{color:var(--gold);margin-bottom:8px}
+.partner-box p{font-size:13.5px;line-height:1.6;margin-bottom:14px}
+.partner-box button{background:transparent;border:1px solid var(--gold);color:var(--gold);font-weight:600;font-size:13.5px;padding:9px 16px;border-radius:9px;cursor:pointer;transition:all .2s;font-family:var(--sans)}
+.partner-box button:hover{background:var(--gold);color:var(--navy)}
+.foot-bot{display:flex;justify-content:space-between;align-items:center;padding-top:26px;flex-wrap:wrap;gap:12px;font-size:13px}
+.foot-bot .badges{display:flex;gap:10px;flex-wrap:wrap}
+.foot-bot .badges span{background:rgba(255,255,255,.06);padding:5px 12px;border-radius:8px}
+
+/* ---------- Modal ---------- */
+.overlay{position:fixed;inset:0;background:rgba(7,32,63,.55);backdrop-filter:blur(4px);z-index:200;display:none;align-items:center;justify-content:center;padding:20px;opacity:0;transition:opacity .25s}
+.overlay.show{display:flex;opacity:1}
+.modal{background:var(--warm);border-radius:22px;width:100%;max-width:430px;box-shadow:var(--shadow-md);max-height:92vh;overflow-y:auto;transform:translateY(14px) scale(.98);transition:transform .3s}
+.overlay.show .modal{transform:none}
+.modal-inner{padding:34px 32px}
+.modal-close{position:sticky;top:0;float:right;background:none;border:none;font-size:24px;color:var(--muted);cursor:pointer;line-height:1;margin:-8px -8px 0 0}
+.modal .brand{text-align:center;margin-bottom:6px}
+.modal .brand .logo{justify-content:center;font-size:20px}
+.modal .brand .sub{font-size:13px;color:var(--muted);margin-top:6px}
+.tabs{display:flex;margin:22px 0 22px;border-bottom:1px solid var(--line)}
+.tab{flex:1;text-align:center;font-size:15px;font-weight:600;padding:12px 0;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s}
+.tab.on{color:var(--navy);border-bottom-color:var(--navy)}
+.pane{display:none}.pane.on{display:block;animation:fade .3s}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+.soc-btns{display:flex;flex-direction:column;gap:10px}
+.sbtn{display:flex;align-items:center;justify-content:center;gap:9px;font-size:15px;font-weight:600;padding:13px;border-radius:11px;cursor:pointer;border:none;font-family:var(--sans);transition:all .2s}
+.sbtn:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+.sb-kakao{background:#FEE500;color:#3C2E2E}
+.sb-naver{background:#03C75A;color:#fff}
+.sb-google{background:#fff;color:#3c4043;border:1px solid var(--line)}
+.divider{display:flex;align-items:center;gap:12px;margin:20px 0}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.divider span{font-size:13px;color:var(--muted)}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:13.5px;font-weight:600;color:var(--slate);margin-bottom:7px}
+.field input,.field select{width:100%;height:46px;border:1px solid var(--line);border-radius:11px;background:#fff;padding:0 14px;font-size:15px;font-family:var(--sans);color:var(--ink);transition:border .2s,box-shadow .2s}
+.field input:focus,.field select:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px rgba(10,46,92,.1)}
+.field input::placeholder{color:#B6AE9C}
+.submit{width:100%;background:var(--navy);color:#fff;font-size:16px;font-weight:600;padding:15px;border:none;border-radius:12px;cursor:pointer;font-family:var(--sans);transition:all .2s;margin-top:4px}
+.submit:hover{background:var(--navy-l)}
+.submit.gold{background:var(--gold);color:var(--gold-ink)}.submit.gold:hover{background:var(--gold-d)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.minor{display:flex;justify-content:space-between;margin-top:14px;font-size:13px}
+.minor a{color:var(--muted)}.minor a:hover{color:var(--navy)}
+.ref-extra{display:none;animation:fade .25s}
+.ref-extra.show{display:block}
+.modal-note{font-size:12.5px;color:var(--muted);text-align:center;margin-top:16px;line-height:1.5}
+.success{text-align:center;padding:20px 0}
+.success .ic{width:64px;height:64px;border-radius:50%;background:var(--green-bg);color:var(--green-tx);display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 18px}
+.success h3{font-size:22px;color:var(--navy);font-weight:700;margin-bottom:10px;font-family:var(--serif)}
+.success p{color:var(--slate);font-size:15px}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- Responsive ---------- */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+  .hero-card{max-width:420px;margin:0 auto}
+  .pain-grid{grid-template-columns:1fr 1fr}
+  .gen-grid,.testi-grid,.cards3{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr}
+  .proc{grid-template-columns:1fr 1fr;gap:34px 18px}.proc::before{display:none}
+  .foot-top{grid-template-columns:1fr 1fr;gap:28px}
+  .partner-box{grid-column:1/-1}
+}
+@media(max-width:680px){
+  .menu{display:none}
+  .hamburger{display:block}
+  .nav-actions .btn-login{display:none}
+  .hero{padding:130px 0 70px}
+  .hero .watermark{font-size:200px;top:-10px}
+  section.block{padding:64px 0}
+  .sec-head h2{font-size:27px}
+  .cta-band{padding:44px 26px}.cta-band h2{font-size:25px}
+  .pain-grid{grid-template-columns:1fr}
+  .foot-top{grid-template-columns:1fr}
+  .tiers{flex-direction:column}
+  .row2{grid-template-columns:1fr}
+  .modal-inner{padding:28px 22px}
+  .mobile-menu.show{display:flex}
+}
+/* mobile slide menu */
+.mobile-menu{display:none;position:fixed;top:74px;left:0;right:0;background:var(--warm);border-bottom:1px solid var(--line);flex-direction:column;padding:14px 24px 22px;z-index:99;box-shadow:var(--shadow-md)}
+.mobile-menu a{padding:13px 0;font-size:16px;font-weight:500;color:var(--navy);border-bottom:1px solid var(--line)}
+.mobile-menu .btn-cta{margin-top:16px;text-align:center}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#" class="logo"><span class="mark">진</span><span data-brand>한국진로진학연구원</span></a>
+    <ul class="menu">
+      <li><a href="#gen">주제탐구 생성기</a></li>
+      <li><a href="#analysis">학생부 분석</a></li>
+      <li><a href="#courses">강의</a></li>
+      <li><a href="#testi">후기</a></li>
+      <li><a href="#info">입시정보</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn btn-login" onclick="openAuth('login')">로그인</button>
+      <button class="btn btn-cta" onclick="openConsult()">무료 입시 상담 →</button>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="메뉴">☰</button>
+  </div>
+  <div class="mobile-menu" id="mobMenu">
+    <a href="#gen" onclick="toggleMenu()">주제탐구 생성기</a>
+    <a href="#analysis" onclick="toggleMenu()">학생부 분석</a>
+    <a href="#courses" onclick="toggleMenu()">강의</a>
+    <a href="#testi" onclick="toggleMenu()">후기</a>
+    <a href="#info" onclick="toggleMenu()">입시정보</a>
+    <a href="#" onclick="toggleMenu();openAuth('login')" style="color:var(--slate)">로그인</a>
+    <button class="btn btn-cta" onclick="toggleMenu();openConsult()">무료 입시 상담 →</button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="watermark">“</div>
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <span class="eyebrow"><span class="dot"></span>상위권 대학 진학 로드맵</span>
+      <h1>우리 아이에게 맞는 입시 전략,<br><em>정말 제대로</em> 세우고 계신가요?</h1>
+      <p class="lead">학생 한 명 한 명의 데이터로 합격 전략을 설계합니다. 정보가 아니라 방향이 필요한 지금, 혼자 고민하지 마세요.</p>
+      <div class="hero-actions">
+        <button class="btn btn-cta btn-hero" onclick="openConsult()">무료 입시 상담 신청하기 →</button>
+        <button class="btn-ghost" onclick="document.getElementById('gen').scrollIntoView()">주제탐구 생성기 체험</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hc-top">
+          <div class="hc-av">A</div>
+          <div><div class="t">학생부 AI 분석</div><div class="s">계열 적합성 진단 리포트</div></div>
+        </div>
+        <div class="hc-row"><span class="lab">계열 적합성</span><div style="display:flex;align-items:center;gap:10px"><div class="hc-bar"><i style="width:88%"></i></div><span class="hc-score">88</span></div></div>
+        <div class="hc-row"><span class="lab">학업 역량</span><div style="display:flex;align-items:center;gap:10px"><div class="hc-bar"><i style="width:76%"></i></div><span class="hc-score">76</span></div></div>
+        <div class="hc-row"><span class="lab">인성 영역</span><div style="display:flex;align-items:center;gap:10px"><div class="hc-bar"><i style="width:92%"></i></div><span class="hc-score">92</span></div></div>
+        <div class="hc-tag">✓ 의약학 계열 적합도 상위권</div>
+        <div class="hc-float f1"><span class="ic">★</span> 맞춤 합격 전략</div>
+        <div class="hc-float f2"><span class="ic">◷</span> 15분 무료 상담</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST ============ -->
+<div class="trust">
+  <div class="wrap trust-row">
+    <span class="trust-item"><span class="c">●</span> 2022 개정 교육과정 기반</span>
+    <span class="trust-sep"></span>
+    <span class="trust-item"><span class="c">●</span> AI 학생부 분석 시스템</span>
+    <span class="trust-sep"></span>
+    <span class="trust-item"><span class="c">●</span> 전문 컨설턴트 1:1 진단</span>
+    <span class="trust-sep"></span>
+    <span class="trust-item"><span class="c">●</span> 학생별 맞춤 합격 로드맵</span>
+  </div>
+</div>
+
+<!-- ============ PAIN ============ -->
+<section class="block pain">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">학부모의 고민</div>
+      <h2>이런 고민, 혼자 하고 계시지 않나요?</h2>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card reveal"><div class="q">“</div><p>생기부, 대체 무엇을 어떻게 채워야 할지 막막해요</p></div>
+      <div class="pain-card reveal"><div class="q">“</div><p>지금 우리 아이 방향이 정말 맞는 건지 모르겠어요</p></div>
+      <div class="pain-card reveal"><div class="q">“</div><p>입시 정보는 넘치는데, 우리 아이에게 맞는 건 뭔지…</p></div>
+      <div class="pain-card reveal"><div class="q">“</div><p>전문가에게 묻고 싶지만 어디서 시작할지 모르겠어요</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GENERATOR ============ -->
+<section class="block" id="gen">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">핵심 서비스 · 무료</div>
+      <h2>학생별 맞춤 탐구 주제, 직접 만들어보세요</h2>
+      <p>2022 개정 교육과정 교과서를 기반으로, 수준에 맞는 탐구 주제와 보고서 구조를 제공합니다.</p>
+    </div>
+    <!-- 각 카드의 href를 실제 생성기 페이지 주소로 교체하세요 -->
+    <div class="gen-grid">
+      <a class="gcard reveal" href="#generator-middle">
+        <span class="badge b-mid">중학생</span>
+        <h3>기초 탐구의 시작</h3>
+        <p class="desc">교과서 기반으로 탐구 주제를 생성하고, 서론·본론·결론의 기본 보고서 구조를 함께 제공합니다.</p>
+        <div class="ex">예시 주제 · <b>일상 속 화학 변화 관찰하기</b></div>
+        <div class="action"><span>주제 생성 시작하기</span><span class="arrow">→</span></div>
+      </a>
+      <a class="gcard reveal" href="#generator-easy">
+        <span class="badge b-easy">고등 · EASY</span>
+        <h3>개념·정의 중심</h3>
+        <p class="desc">고1 대상. 기본 개념과 정의 중심의 탐구 주제로, 비교적 쉽게 탐구 활동을 시작할 수 있는 틀을 제시합니다.</p>
+        <div class="ex">예시 주제 · <b>삼투압 원리와 생활 속 적용</b></div>
+        <div class="action"><span>주제 생성 시작하기</span><span class="arrow">→</span></div>
+      </a>
+      <a class="gcard reveal" href="#generator-hard">
+        <span class="ribbon">심화</span>
+        <span class="badge b-hard">고등 · HARD</span>
+        <h3>융합·문제해결</h3>
+        <p class="desc">고1 대상. 융합적 사고와 문제 해결 관점을 포함한 심화 탐구 주제로, 난이도 있는 보고서 틀을 제시합니다.</p>
+        <div class="ex">예시 주제 · <b>기후 데이터로 본 도시 열섬 해법</b></div>
+        <div class="action"><span>주제 생성 시작하기</span><span class="arrow">→</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ANALYSIS ============ -->
+<section class="block pain" id="analysis">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">학생부 분석</div>
+      <h2>학생부, 먼저 진단하고 전략을 세우세요</h2>
+      <p>AI로 무료로 먼저 확인하고, 더 깊은 진단이 필요하면 전문 컨설턴트가 함께합니다.</p>
+    </div>
+    <div class="split">
+      <div class="acard free reveal">
+        <span class="pill">무료</span>
+        <h3>AI 분석</h3>
+        <p>AI 기반 시스템으로 학생부를 분석해 계열 적합성·학업 역량·인성 영역으로 점수화합니다.</p>
+        <ul>
+          <li><span class="ck">✓</span> 영역별 점수 리포트 즉시 확인</li>
+          <li><span class="ck">✓</span> 계열 적합성 진단</li>
+          <li><span class="ck">✓</span> 상담·진로지도 참고 자료로 활용</li>
+        </ul>
+        <span class="go" onclick="openConsult()">무료로 시작하기 →</span>
+      </div>
+      <div class="acard paid reveal">
+        <span class="pill">유료 · 심층</span>
+        <h3>컨설턴트 분석</h3>
+        <p>전문 컨설턴트가 학생부를 직접 분석해 강점·보완점과 활동 방향, 지원 가능 대학 범위를 종합 제시합니다.</p>
+        <ul>
+          <li><span class="ck">✓</span> 강점·보완점 1:1 심층 정리</li>
+          <li><span class="ck">✓</span> 학생 맞춤 활동 방향 제시</li>
+          <li><span class="ck">✓</span> 지원 가능 대학 범위 종합 진단</li>
+        </ul>
+        <span class="go" onclick="openConsult()">상담으로 자세히 알아보기 →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MID CTA ============ -->
+<section class="block" style="padding:64px 0">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2>지금 필요한 건 더 많은 정보가 아니라,<br><em>우리 아이에게 맞는 전략</em>입니다</h2>
+      <p>15분 무료 상담으로 우리 아이의 방향을 함께 잡아보세요.</p>
+      <button class="btn btn-cta" onclick="openConsult()">무료 입시 상담 신청하기 →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="block testi" id="testi">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">실제 학부모 후기</div>
+      <h2>방향이 잡히니, 마음이 놓였습니다</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="tcard reveal">
+        <div class="stars">★★★★★</div>
+        <p class="body">아이 생기부를 어떻게 채워야 할지 막막했는데, 분석 결과를 보고 나니 무엇을 보완해야 하는지 명확해졌어요. 막연한 불안이 사라졌습니다.</p>
+        <div class="result">탐구 방향 재설계 후 내신·세특 연계 완성</div>
+        <div class="who"><div class="av">김</div><div><div class="nm">김○○ 학부모</div><div class="role">고1 자녀</div></div></div>
+      </div>
+      <div class="tcard reveal">
+        <div class="stars">★★★★★</div>
+        <p class="body">혼자 검색만 하다 지쳤었는데, 상담 한 번으로 우리 아이에게 맞는 로드맵이 그려졌어요. 컨설턴트 선생님이 끝까지 함께해 주셔서 든든했습니다.</p>
+        <div class="result">의약학 계열 탐구 로드맵 수립</div>
+        <div class="who"><div class="av">이</div><div><div class="nm">이○○ 학부모</div><div class="role">예비 고1 자녀</div></div></div>
+      </div>
+      <div class="tcard reveal">
+        <div class="stars">★★★★★</div>
+        <p class="body">주제탐구 생성기로 아이가 스스로 보고서를 써보더니 자신감이 붙었어요. 무료라 부담 없이 시작했는데 기대 이상이었습니다.</p>
+        <div class="result">탐구 보고서 3편 완성, 세특 반영</div>
+        <div class="who"><div class="av">박</div><div><div class="nm">박○○ 학부모</div><div class="role">중3 자녀</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="block">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">1:1 컨설팅 흐름</div>
+      <h2>상담은 이렇게 진행됩니다</h2>
+      <p>부담 없이 신청하면, 나머지는 저희가 함께 설계합니다.</p>
+    </div>
+    <div class="proc">
+      <div class="pstep reveal"><div class="n">1</div><h4>무료 상담 신청</h4><p>간단한 정보만 남기면 끝. 부담 없이 시작하세요.</p></div>
+      <div class="pstep reveal"><div class="n">2</div><h4>학생부 진단</h4><p>AI·전문가가 현재 상태와 강점을 정확히 파악합니다.</p></div>
+      <div class="pstep reveal"><div class="n">3</div><h4>맞춤 전략 설계</h4><p>학생별 데이터로 합격 전략을 구체화합니다.</p></div>
+      <div class="pstep reveal"><div class="n">4</div><h4>진학 로드맵</h4><p>탐구·세특·지원까지 이어지는 로드맵을 제시합니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COURSES ============ -->
+<section class="block pain" id="courses">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">강의</div>
+      <h2>전문가와 함께하는 1:1 강의</h2>
+    </div>
+    <div class="cards3">
+      <div class="ccard reveal">
+        <div class="ic">⚕</div>
+        <h4>의대 준비반 <span class="st st-run">운영중</span></h4>
+        <p>예비 고1·고1 대상 1:1 Zoom 강의. 생명과학·의학 기본 개념과 의대 진학 탐구 방향을 제시합니다. <b style="color:var(--navy)">신청은 학원 단위로</b> 진행됩니다.</p>
+      </div>
+      <div class="ccard soon reveal">
+        <div class="ic">📚</div>
+        <h4>중·고등 지식강의 <span class="st st-soon">준비중</span></h4>
+        <p>사회 이슈와 다양한 학문 분야의 지식을 소개해 관심 분야와 탐구 주제를 발견하도록 돕는 강의입니다.</p>
+      </div>
+      <div class="ccard soon reveal">
+        <div class="ic">✎</div>
+        <h4>보고서 작성법 <span class="st st-soon">준비중</span></h4>
+        <p>특목고·자사고 준비생과 예비 고등학생 대상. 탐구 보고서의 개념과 작성 과정을 안내하는 강의입니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INFO ============ -->
+<section class="block" id="info">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">신청 · 입시정보</div>
+      <h2>더 많은 정보가 필요하다면</h2>
+    </div>
+    <!-- 각 카드의 href를 실제 신청/뉴스 페이지 주소로 교체하세요 -->
+    <div class="cards3">
+      <a class="ccard reveal" href="#report-review">
+        <div class="ic">✍</div>
+        <h4>보고서 첨삭 신청 <span class="st st-run">유료</span></h4>
+        <p>작성한 탐구 보고서를 전문 컨설턴트가 검토해 보완점·논리 구조·탐구 방향을 첨삭합니다.</p>
+        <div class="act"><span>첨삭 신청하기</span><span class="arrow">→</span></div>
+      </a>
+      <a class="ccard reveal" href="#seminar">
+        <div class="ic">🎓</div>
+        <h4>입시 설명회 신청</h4>
+        <p>설명회 주제 안내와 신청을 한곳에서. 최신 설명회 일정과 신청 폼을 확인하세요.</p>
+        <div class="act"><span>설명회 신청하기</span><span class="arrow">→</span></div>
+      </a>
+      <a class="ccard reveal" href="#blog-news">
+        <div class="ic">📰</div>
+        <h4>진로진학 뉴스</h4>
+        <p>최신 대학 입시 정보와 주요 입시 변화를 블로그와 연동해 확인할 수 있습니다.</p>
+        <div class="act"><span>뉴스 보러가기</span><span class="arrow">→</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2><em>혼자 고민하지 마세요</em></h2>
+      <p>부담 없이, 무료로 시작할 수 있습니다. 우리 아이의 가능성을 함께 열어가요.</p>
+      <button class="btn btn-cta" onclick="openConsult()">무료 입시 상담 신청하기 →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="#" class="logo"><span class="mark">진</span><span data-brand>한국진로진학연구원</span></a>
+        <p>학생별 데이터로 합격 전략을 설계하는 진로진학 컨설팅 파트너입니다.</p>
+      </div>
+      <div class="foot-col">
+        <h5>서비스</h5>
+        <a href="#gen">주제탐구 생성기</a>
+        <a href="#analysis">학생부 분석</a>
+        <a href="#courses">강의</a>
+        <a href="#info">보고서 첨삭</a>
+      </div>
+      <div class="foot-col">
+        <h5>안내</h5>
+        <a href="#testi">합격 후기</a>
+        <a href="#info">입시 설명회</a>
+        <a href="#info">진로진학 뉴스</a>
+        <a href="#" onclick="openAuth('login')">로그인 / 회원가입</a>
+      </div>
+      <div class="partner-box">
+        <h5>가맹 학원 문의</h5>
+        <p>우리 학원 브랜드로 동일한 시스템을 운영하세요. 화이트라벨 파트너십을 안내해 드립니다.</p>
+        <button onclick="openConsult('partner')">가맹 문의하기 →</button>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 <span data-brand>한국진로진학연구원</span>. All rights reserved.</span>
+      <div class="badges">
+        <span>사업자등록번호 000-00-00000</span>
+        <span>통신판매업 제2026-서울-00000호</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ AUTH MODAL ============ -->
+<div class="overlay" id="authModal">
+  <div class="modal">
+    <div class="modal-inner">
+      <button class="modal-close" onclick="closeModal('authModal')">×</button>
+      <div class="brand">
+        <div class="logo"><span class="mark">진</span><span data-brand>한국진로진학연구원</span></div>
+        <div class="sub">로그인하고 내 탐구·분석 결과를 관리하세요</div>
+      </div>
+      <div class="tabs">
+        <div class="tab on" id="tabLogin" onclick="switchTab('login')">로그인</div>
+        <div class="tab" id="tabSignup" onclick="switchTab('signup')">회원가입</div>
+      </div>
+
+      <!-- LOGIN -->
+      <div class="pane on" id="paneLogin">
+        <div class="soc-btns">
+          <button class="sbtn sb-kakao" onclick="demo()">카카오로 시작하기</button>
+          <button class="sbtn sb-naver" onclick="demo()">네이버로 시작하기</button>
+          <button class="sbtn sb-google" onclick="demo()">구글로 시작하기</button>
+        </div>
+        <div class="divider"><span>또는 이메일로</span></div>
+        <div class="field"><label>이메일</label><input type="email" placeholder="name@example.com"></div>
+        <div class="field"><label>비밀번호</label><input type="password" placeholder="••••••••"></div>
+        <button class="submit" onclick="demo()">로그인</button>
+        <div class="minor"><a href="#" onclick="return false">비밀번호 찾기</a><a href="#" onclick="switchTab('signup');return false">이메일로 회원가입 →</a></div>
+      </div>
+
+      <!-- SIGNUP -->
+      <div class="pane" id="paneSignup">
+        <div class="soc-btns">
+          <button class="sbtn sb-kakao" onclick="demo()">카카오로 가입</button>
+          <button class="sbtn sb-naver" onclick="demo()">네이버로 가입</button>
+          <button class="sbtn sb-google" onclick="demo()">구글로 가입</button>
+        </div>
+        <div class="divider"><span>또는 이메일로</span></div>
+        <div class="row2">
+          <div class="field"><label>이름</label><input type="text" placeholder="홍길동"></div>
+          <div class="field"><label>휴대폰</label><input type="tel" placeholder="010-0000-0000"></div>
+        </div>
+        <div class="field"><label>이메일</label><input type="email" placeholder="name@example.com"></div>
+        <div class="field"><label>비밀번호</label><input type="password" placeholder="8자 이상"></div>
+        <div class="field">
+          <label>추천 경로 <span style="font-weight:400;color:var(--muted)">(선택)</span></label>
+          <select id="refSel" onchange="refChange('s')">
+            <option value="">직접 찾아왔어요</option>
+            <option value="academy">가맹 학원에서 왔어요</option>
+            <option value="person">개인 추천을 받았어요</option>
+          </select>
+        </div>
+        <div class="field ref-extra" id="refAcademy-s"><label>가맹 학원 코드</label><input type="text" placeholder="예: JJY-1234"></div>
+        <div class="field ref-extra" id="refPerson-s"><label>추천인 이름 / 연락처</label><input type="text" placeholder="추천해주신 분 정보"></div>
+        <button class="submit" onclick="demo()">가입하고 시작하기</button>
+        <p class="modal-note">가입 시 이용약관 및 개인정보 처리방침에 동의하게 됩니다.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CONSULT MODAL ============ -->
+<div class="overlay" id="consultModal">
+  <div class="modal">
+    <div class="modal-inner" id="consultBody">
+      <button class="modal-close" onclick="closeModal('consultModal')">×</button>
+      <div class="brand">
+        <div class="logo"><span class="mark">진</span><span id="consultTitle">무료 입시 상담</span></div>
+        <div class="sub" id="consultSub">간단한 정보만 남기면, 전문 컨설턴트가 연락드립니다</div>
+      </div>
+      <div style="margin-top:24px"></div>
+      <div class="row2">
+        <div class="field"><label>학부모 성함</label><input type="text" placeholder="홍길동"></div>
+        <div class="field"><label>연락처</label><input type="tel" placeholder="010-0000-0000"></div>
+      </div>
+      <div class="field" id="gradeField">
+        <label>자녀 학년</label>
+        <select>
+          <option>중학생</option><option>예비 고1</option><option>고1</option>
+          <option>고2</option><option>고3</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>추천 경로 <span style="font-weight:400;color:var(--muted)">(선택)</span></label>
+        <select id="refSelC" onchange="refChange('c')">
+          <option value="">직접 찾아왔어요</option>
+          <option value="academy">가맹 학원에서 왔어요</option>
+          <option value="person">개인 추천을 받았어요</option>
+        </select>
+      </div>
+      <div class="field ref-extra" id="refAcademy-c"><label>가맹 학원 코드</label><input type="text" placeholder="예: JJY-1234"></div>
+      <div class="field ref-extra" id="refPerson-c"><label>추천인 이름 / 연락처</label><input type="text" placeholder="추천해주신 분 정보"></div>
+      <button class="submit gold" onclick="consultDone()">상담 신청하기</button>
+      <p class="modal-note">남겨주신 정보는 상담 목적 외 사용되지 않습니다.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===== 화이트라벨: 브랜드명을 한 곳에서 교체 ===== */
+const BRAND = { name: "한국진로진학연구원" };
+document.querySelectorAll('[data-brand]').forEach(el=>el.textContent = BRAND.name);
+
+/* ===== Header scroll ===== */
+const hdr = document.getElementById('hdr');
+window.addEventListener('scroll',()=>{ hdr.classList.toggle('scrolled', window.scrollY>20); });
+
+/* ===== Mobile menu ===== */
+function toggleMenu(){ document.getElementById('mobMenu').classList.toggle('show'); }
+
+/* ===== Modals ===== */
+function openAuth(tab){ openModal('authModal'); switchTab(tab||'login'); }
+function openConsult(mode){
+  const t=document.getElementById('consultTitle'), s=document.getElementById('consultSub'), g=document.getElementById('gradeField');
+  if(mode==='partner'){ t.textContent="가맹 학원 문의"; s.textContent="화이트라벨 파트너십을 안내해 드립니다"; g.style.display='none'; }
+  else{ t.textContent="무료 입시 상담"; s.textContent="간단한 정보만 남기면, 전문 컨설턴트가 연락드립니다"; g.style.display='block'; }
+  openModal('consultModal');
+}
+function openModal(id){ document.getElementById(id).classList.add('show'); document.body.style.overflow='hidden'; }
+function closeModal(id){ document.getElementById(id).classList.remove('show'); document.body.style.overflow=''; }
+document.querySelectorAll('.overlay').forEach(o=>o.addEventListener('click',e=>{ if(e.target===o) closeModal(o.id); }));
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') document.querySelectorAll('.overlay.show').forEach(o=>closeModal(o.id)); });
+
+/* ===== Tabs ===== */
+function switchTab(t){
+  const L=t==='login';
+  document.getElementById('tabLogin').classList.toggle('on',L);
+  document.getElementById('tabSignup').classList.toggle('on',!L);
+  document.getElementById('paneLogin').classList.toggle('on',L);
+  document.getElementById('paneSignup').classList.toggle('on',!L);
+}
+
+/* ===== Referral conditional fields ===== */
+function refChange(scope){
+  const sel=document.getElementById(scope==='s'?'refSel':'refSelC').value;
+  document.getElementById('refAcademy-'+scope).classList.toggle('show',sel==='academy');
+  document.getElementById('refPerson-'+scope).classList.toggle('show',sel==='person');
+}
+
+/* ===== Demo actions ===== */
+function demo(){ alert('데모 화면입니다 — 실제 연동 시 이 자리에 로그인/가입 로직이 들어갑니다.'); }
+function consultDone(){
+  document.getElementById('consultBody').innerHTML =
+    '<button class="modal-close" onclick="closeModal(\'consultModal\')">×</button>'+
+    '<div class="success"><div class="ic">✓</div><h3>신청이 완료되었습니다</h3>'+
+    '<p>확인 후 빠르게 연락드리겠습니다.<br>혼자 고민하지 않으셔도 됩니다.</p></div>';
+}
+
+/* ===== Scroll reveal ===== */
+const io=new IntersectionObserver((es)=>{es.forEach((e,i)=>{ if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('in'), (i%4)*70); io.unobserve(e.target);} });},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
