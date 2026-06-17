@@ -784,7 +784,7 @@ function openMyPage(){
   openModal('myPageModal');
 }
 /* 마이페이지 창(mypage.html)을 불러와 주입 */
-fetch('mypage.html').then(r=>r.text()).then(html=>{
+fetch('mypage-modal.html').then(r=>r.text()).then(html=>{
   const mount=document.getElementById('myPageMount');
   if(!mount) return;
   mount.innerHTML=html;
