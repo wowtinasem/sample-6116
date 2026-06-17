@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>한국진로진학연구원 — 우리 아이 맞춤 입시 전략</title>
+<link rel="icon" type="image/png" href="jinjinlogo.png">
+<link rel="apple-touch-icon" href="jinjinlogo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@700;800&display=swap" rel="stylesheet">
@@ -40,7 +42,8 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;transition:all .35s ease;
 header.scrolled{background:rgba(250,247,241,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:74px}
 .logo{font-family:var(--serif);font-size:21px;font-weight:700;color:var(--navy);letter-spacing:-.5px;display:flex;align-items:center;gap:9px}
-.logo .mark{width:30px;height:30px;border-radius:8px;background:var(--navy);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:15px;font-family:var(--sans)}
+.logo .mark{width:34px;height:34px;border-radius:9px;background:var(--navy);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:15px;font-family:var(--sans);overflow:hidden;padding:3px;flex-shrink:0}
+.logo .mark img{width:100%;height:100%;object-fit:contain;display:block}
 .menu{display:flex;gap:34px;list-style:none}
 .menu a{font-size:15px;font-weight:500;color:var(--slate);position:relative;transition:color .2s}
 .menu a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--gold);transition:width .25s}
@@ -219,7 +222,7 @@ a.ccard:hover .act .arrow{transform:translateX(5px)}
 /* footer */
 footer{background:var(--navy-d);color:#9FB0C6;padding:60px 0 30px}
 .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:36px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,.1)}
-.foot-brand .logo{color:#fff}.foot-brand .logo .mark{background:var(--gold);color:var(--navy)}
+.foot-brand .logo{color:#fff}.foot-brand .logo .mark{background:var(--navy-l)}
 .foot-brand p{margin-top:16px;font-size:14px;line-height:1.7;max-width:280px}
 .foot-col h5{color:#fff;font-size:14px;font-weight:700;margin-bottom:16px}
 .foot-col a{display:block;font-size:14px;margin-bottom:11px;transition:color .2s}
@@ -318,7 +321,7 @@ footer{background:var(--navy-d);color:#9FB0C6;padding:60px 0 30px}
 <!-- ============ HEADER ============ -->
 <header id="hdr">
   <div class="wrap nav">
-    <a href="#" class="logo"><span class="mark">진</span><span data-brand>한국진로진학연구원</span></a>
+    <a href="#" class="logo"><span class="mark"><img src="jinjinlogo.png" alt="한국진로진학연구원 로고"></span><span data-brand>한국진로진학연구원</span></a>
     <ul class="menu">
       <li><a href="#gen">주제탐구 생성기</a></li>
       <li><a href="#analysis">학생부 분석</a></li>
@@ -602,7 +605,7 @@ footer{background:var(--navy-d);color:#9FB0C6;padding:60px 0 30px}
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-brand">
-        <a href="#" class="logo"><span class="mark">진</span><span data-brand>한국진로진학연구원</span></a>
+        <a href="#" class="logo"><span class="mark"><img src="jinjinlogo.png" alt="한국진로진학연구원 로고"></span><span data-brand>한국진로진학연구원</span></a>
         <p>학생별 데이터로 합격 전략을 설계하는 진로진학 컨설팅 파트너입니다.</p>
       </div>
       <div class="foot-col">
@@ -641,7 +644,7 @@ footer{background:var(--navy-d);color:#9FB0C6;padding:60px 0 30px}
     <div class="modal-inner">
       <button class="modal-close" onclick="closeModal('authModal')">×</button>
       <div class="brand">
-        <div class="logo"><span class="mark">진</span><span data-brand>한국진로진학연구원</span></div>
+        <div class="logo"><span class="mark"><img src="jinjinlogo.png" alt="한국진로진학연구원 로고"></span><span data-brand>한국진로진학연구원</span></div>
         <div class="sub">로그인하고 내 탐구·분석 결과를 관리하세요</div>
       </div>
       <div class="tabs">
@@ -688,7 +691,7 @@ footer{background:var(--navy-d);color:#9FB0C6;padding:60px 0 30px}
     <div class="modal-inner">
       <button class="modal-close" onclick="closeModal('myPageModal')">×</button>
       <div class="brand">
-        <div class="logo"><span class="mark">진</span><span>마이페이지</span></div>
+        <div class="logo"><span class="mark"><img src="jinjinlogo.png" alt="한국진로진학연구원 로고"></span><span>마이페이지</span></div>
         <div class="sub">개인정보를 확인하고 수정하세요</div>
       </div>
       <div style="margin-top:24px"></div>
@@ -708,7 +711,7 @@ footer{background:var(--navy-d);color:#9FB0C6;padding:60px 0 30px}
     <div class="modal-inner" id="consultBody">
       <button class="modal-close" onclick="closeModal('consultModal')">×</button>
       <div class="brand">
-        <div class="logo"><span class="mark">진</span><span id="consultTitle">컨설턴트 상담</span></div>
+        <div class="logo"><span class="mark"><img src="jinjinlogo.png" alt="한국진로진학연구원 로고"></span><span id="consultTitle">컨설턴트 상담</span></div>
         <div class="sub" id="consultSub">간단한 정보만 남기면, 전문 컨설턴트가 연락드립니다</div>
       </div>
       <div style="margin-top:24px"></div>
