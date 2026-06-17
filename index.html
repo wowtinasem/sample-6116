@@ -656,8 +656,8 @@ footer{background:var(--navy-d);color:#9FB0C6;padding:60px 0 30px}
 
       <!-- LOGIN -->
       <div class="pane on" id="paneLogin">
-        <div class="field"><label>아이디</label><input type="text" placeholder="아이디를 입력하세요"></div>
-        <div class="field"><label>비밀번호</label><input type="password" placeholder="••••••••"></div>
+        <div class="field"><label>아이디</label><input id="loginId" type="text" placeholder="아이디를 입력하세요"></div>
+        <div class="field"><label>비밀번호</label><input id="loginPw" type="password" placeholder="••••••••"></div>
         <button class="submit" onclick="doLogin()">로그인</button>
         <div class="minor"><a href="#" onclick="return false">아이디 / 비밀번호 찾기</a><a href="#" onclick="switchTab('signup');return false">회원가입 →</a></div>
       </div>
@@ -784,9 +784,16 @@ function switchTab(t){
 function setLoggedIn(v){
   document.querySelectorAll('.mypage-btn').forEach(b=>b.style.display = v ? '' : 'none');
 }
+const DEMO_USER={id:'hkjinhak', pw:'jinhak1234'};
 function doLogin(){
-  setLoggedIn(true);
-  closeModal('authModal');
+  const id=(document.getElementById('loginId').value||'').trim();
+  const pw=document.getElementById('loginPw').value||'';
+  if(id===DEMO_USER.id && pw===DEMO_USER.pw){
+    setLoggedIn(true);
+    closeModal('authModal');
+  } else {
+    alert('아이디 또는 비밀번호가 올바르지 않습니다.\n(테스트 계정 — 아이디: hkjinhak / 비밀번호: jinhak1234)');
+  }
 }
 function openMyPage(){ openModal('myPageModal'); }
 function signupSubmit(){
