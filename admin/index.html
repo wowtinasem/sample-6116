@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>관리자 — 한국진로진학연구원</title>
+<link rel="icon" type="image/png" href="../jinjinlogo.png">
+<link rel="apple-touch-icon" href="../jinjinlogo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css">
+<style>
+:root{
+  --navy:#0A2E5C; --navy-d:#07203F; --navy-l:#143C6E;
+  --gold:#C8A96A; --gold-d:#B5945A; --gold-ink:#3A2E12;
+  --warm:#FAF7F1; --cream:#F3EDE1; --line:#E7DFD0;
+  --slate:#5F6B7A; --ink:#2A2E35; --muted:#8A8270;
+  --green-bg:#E8F2EC; --green-tx:#2E7D5B;
+  --gray-bg:#EFEBE2; --gray-tx:#6B675E;
+  --serif:'Gowun Batang', serif;
+  --sans:'Pretendard', -apple-system, sans-serif;
+  --shadow-md:0 4px 16px rgba(10,46,92,.08), 0 12px 32px rgba(10,46,92,.06);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);color:var(--ink);background:var(--warm);line-height:1.7;-webkit-font-smoothing:antialiased;min-height:100vh}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+.topbar{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid var(--line);background:rgba(250,247,241,.92);backdrop-filter:blur(12px);position:sticky;top:0;z-index:10}
+.logo{font-family:var(--serif);font-size:19px;font-weight:700;color:var(--navy);letter-spacing:-.5px;display:flex;align-items:center;gap:9px}
+.logo .mark{width:32px;height:32px;border-radius:9px;background:var(--navy);display:flex;align-items:center;justify-content:center;overflow:hidden;padding:3px;flex-shrink:0}
+.logo .mark img{width:100%;height:100%;object-fit:contain;display:block}
+.logo .tag{font-family:var(--sans);font-size:11px;font-weight:700;color:var(--gold-ink);background:var(--gold);padding:2px 8px;border-radius:20px;margin-left:4px}
+.back{font-size:14px;font-weight:600;color:var(--slate);padding:8px 14px;border:1px solid var(--line);border-radius:10px;transition:all .2s}
+.back:hover{border-color:var(--navy);color:var(--navy)}
+
+.shell{max-width:1040px;margin:0 auto;padding:34px 20px 80px;display:grid;grid-template-columns:248px 1fr;gap:24px;align-items:start}
+.side{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;position:sticky;top:88px}
+.side .ttl{font-size:12.5px;font-weight:700;color:var(--muted);letter-spacing:.5px;padding:4px 8px 12px}
+.menu{list-style:none;display:flex;flex-direction:column;gap:4px}
+.menu button{width:100%;text-align:left;background:none;border:none;font-family:inherit;font-size:14.5px;font-weight:600;color:var(--slate);padding:12px 14px;border-radius:10px;cursor:pointer;transition:all .2s}
+.menu button:hover{background:var(--cream);color:var(--navy)}
+.menu button.on{background:var(--navy);color:#fff}
+
+.content{background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px;box-shadow:var(--shadow-md);min-height:460px}
+.panel{display:none;animation:fade .3s}
+.panel.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+.panel-head{margin-bottom:20px}
+.panel-head h2{font-family:var(--serif);font-size:22px;color:var(--navy);font-weight:700}
+.panel-head p{font-size:13.5px;color:var(--muted);margin-top:4px}
+
+.form-card{background:var(--warm);border:1px solid var(--line);border-radius:14px;padding:20px 20px 18px;margin-bottom:24px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--slate);margin-bottom:6px}
+.field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:10px;background:#fff;padding:11px 13px;font-size:14.5px;font-family:var(--sans);color:var(--ink);transition:border .2s,box-shadow .2s}
+.field input{height:44px;padding:0 13px}
+.field textarea{min-height:84px;resize:vertical;line-height:1.6}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px rgba(10,46,92,.1)}
+.field input::placeholder,.field textarea::placeholder{color:#B6AE9C}
+.chk{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:600;color:var(--navy);cursor:pointer;margin:6px 0 14px;user-select:none}
+.chk input{width:18px;height:18px;accent-color:var(--navy);cursor:pointer}
+.submit{background:var(--navy);color:#fff;font-size:15px;font-weight:600;padding:12px 22px;border:none;border-radius:11px;cursor:pointer;font-family:var(--sans);transition:all .2s}
+.submit:hover{background:var(--navy-l)}
+
+.sec-sub{font-size:13px;font-weight:700;color:var(--slate);margin-bottom:12px}
+.list{display:flex;flex-direction:column;gap:10px}
+.list-item{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.list-item .ti{font-weight:700;color:var(--ink);font-size:15px}
+.list-item .meta{font-size:12.5px;color:var(--muted);margin-top:3px}
+.list-item .body-txt{font-size:13.5px;color:var(--slate);margin-top:8px;white-space:pre-wrap}
+.actions{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0}
+.badge{font-size:12px;font-weight:700;padding:5px 11px;border-radius:20px;white-space:nowrap}
+.b-open{background:var(--green-bg);color:var(--green-tx)}
+.b-closed{background:var(--gray-bg);color:var(--gray-tx)}
+.mini{font-size:12.5px;font-weight:600;border:1px solid var(--line);background:#fff;color:var(--slate);padding:6px 11px;border-radius:9px;cursor:pointer;font-family:var(--sans);transition:all .15s;white-space:nowrap}
+.mini:hover{border-color:var(--navy);color:var(--navy)}
+.mini.danger:hover{border-color:#D8443B;color:#D8443B}
+.empty{text-align:center;color:var(--muted);font-size:14px;padding:40px 0}
+
+@media(max-width:720px){
+  .shell{grid-template-columns:1fr;gap:16px}
+  .side{position:static}
+  .menu{flex-direction:row;flex-wrap:wrap}
+  .menu button{width:auto;flex:1 1 auto}
+  .content{padding:22px 18px}
+  .grid2{grid-template-columns:1fr}
+  .actions{flex-direction:row;flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="../index.html" class="logo"><span class="mark"><img src="../jinjinlogo.png" alt="한국진로진학연구원 로고"></span><span>한국진로진학연구원</span><span class="tag">관리자</span></a>
+  <a href="../index.html" class="back">← 사이트로</a>
+</div>
+
+<div class="shell">
+  <aside class="side">
+    <div class="ttl">관리 메뉴</div>
+    <ul class="menu">
+      <li><button class="on" data-panel="reviews" onclick="showPanel('reviews')">첨삭 신청 목록</button></li>
+      <li><button data-panel="seminars" onclick="showPanel('seminars')">입시설명회 목록</button></li>
+      <li><button data-panel="testimonials" onclick="showPanel('testimonials')">후기 작성 목록</button></li>
+    </ul>
+  </aside>
+
+  <section class="content">
+    <!-- 첨삭 신청 목록 -->
+    <div class="panel on" id="panel-reviews">
+      <div class="panel-head"><h2>첨삭 신청 목록</h2><p>신청 내용을 확인하고 첨삭 결과를 입력하세요. <b>공개</b>로 설정한 항목만 사이트에 노출됩니다.</p></div>
+      <div class="form-card">
+        <div class="grid2">
+          <div class="field"><label>신청자</label><input id="rv-name" placeholder="예: 김OO 학부모"></div>
+          <div class="field"><label>보고서 제목</label><input id="rv-title" placeholder="예: 생명과학 탐구 보고서"></div>
+        </div>
+        <div class="field"><label>첨삭 내용</label><textarea id="rv-body" placeholder="첨삭 결과 / 코멘트를 입력하세요"></textarea></div>
+        <label class="chk"><input type="checkbox" id="rv-open"> 이 항목을 공개로 노출</label>
+        <button class="submit" onclick="addItem('reviews')">저장</button>
+      </div>
+      <div class="sec-sub">등록된 첨삭 항목</div>
+      <div class="list" id="list-reviews"></div>
+    </div>
+
+    <!-- 입시설명회 목록 -->
+    <div class="panel" id="panel-seminars">
+      <div class="panel-head"><h2>입시설명회 목록</h2><p>설명회를 등록하세요. <b>공개</b>로 설정한 설명회만 사이트에 노출됩니다.</p></div>
+      <div class="form-card">
+        <div class="grid2">
+          <div class="field"><label>설명회 제목</label><input id="sm-title" placeholder="예: 2027 의약학 계열 입시 전략 설명회"></div>
+          <div class="field"><label>일정</label><input id="sm-date" placeholder="예: 2026-07-10 14:00"></div>
+        </div>
+        <div class="field"><label>장소</label><input id="sm-place" placeholder="예: 강남 본원 / 온라인"></div>
+        <div class="field"><label>안내 내용</label><textarea id="sm-body" placeholder="설명회 소개 및 신청 안내"></textarea></div>
+        <label class="chk"><input type="checkbox" id="sm-open"> 이 설명회를 공개로 노출</label>
+        <button class="submit" onclick="addItem('seminars')">저장</button>
+      </div>
+      <div class="sec-sub">등록된 설명회</div>
+      <div class="list" id="list-seminars"></div>
+    </div>
+
+    <!-- 후기 작성 목록 -->
+    <div class="panel" id="panel-testimonials">
+      <div class="panel-head"><h2>후기 작성 목록</h2><p>후기를 작성하세요. <b>공개</b>로 설정한 후기만 사이트에 노출됩니다.</p></div>
+      <div class="form-card">
+        <div class="grid2">
+          <div class="field"><label>작성자</label><input id="ts-name" placeholder="예: 박OO 학부모"></div>
+          <div class="field"><label>자녀 정보</label><input id="ts-child" placeholder="예: 고2 자녀"></div>
+        </div>
+        <div class="field"><label>후기 내용</label><textarea id="ts-body" placeholder="후기 본문을 입력하세요"></textarea></div>
+        <div class="field"><label>결과 한 줄 <span style="font-weight:400;color:var(--muted)">(선택)</span></label><input id="ts-result" placeholder="예: 의약학 계열 탐구 로드맵 수립"></div>
+        <label class="chk"><input type="checkbox" id="ts-open"> 이 후기를 공개로 노출</label>
+        <button class="submit" onclick="addItem('testimonials')">저장</button>
+      </div>
+      <div class="sec-sub">등록된 후기</div>
+      <div class="list" id="list-testimonials"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+/* ===== 데모 상태 (실제 연동 시 서버 데이터로 교체) ===== */
+const state = {
+  reviews: [
+    {id:1, title:'생명과학 탐구 보고서', meta:'신청자 김OO 학부모 · 2026-05-20', body:'서론의 문제의식이 명확합니다. 실험 데이터 해석 부분을 보강하면 좋겠습니다.', open:true},
+    {id:2, title:'화학 실험 보고서', meta:'신청자 이OO 학부모 · 2026-05-02', body:'첨삭 진행 중입니다.', open:false},
+  ],
+  seminars: [
+    {id:3, title:'2027 의약학 계열 입시 전략 설명회', meta:'2026-06-25 14:00 · 온라인', body:'의약학 계열 지망생 학부모 대상 설명회입니다.', open:true},
+    {id:4, title:'예비 고1 학생부 로드맵 설명회', meta:'2026-05-30 · 강남 본원', body:'예비 고1 대상 학생부 설계 안내.', open:false},
+  ],
+  testimonials: [
+    {id:5, title:'박OO 학부모 · 자사고 준비 중3 자녀', meta:'주제탐구 생성기, 탐구보고서 3편 완성', body:'주제탐구 생성기로 아이가 스스로 보고서를 써보더니 자신감이 붙었어요.', open:true},
+  ],
+};
+
+function showPanel(key){
+  document.querySelectorAll('.menu button').forEach(b=>b.classList.toggle('on', b.dataset.panel===key));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on', p.id==='panel-'+key));
+}
+function esc(s){ return (s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function val(id){ return document.getElementById(id).value.trim(); }
+function chk(id){ return document.getElementById(id).checked; }
+function clearFields(ids){ ids.forEach(id=>document.getElementById(id).value=''); }
+
+function render(sec){
+  const box=document.getElementById('list-'+sec), items=state[sec];
+  if(!items.length){ box.innerHTML='<div class="empty">등록된 항목이 없습니다.</div>'; return; }
+  box.innerHTML=items.map(it=>`
+    <div class="list-item">
+      <div style="flex:1">
+        <div class="ti">${esc(it.title)}</div>
+        <div class="meta">${esc(it.meta)}</div>
+        ${it.body?`<div class="body-txt">${esc(it.body)}</div>`:''}
+      </div>
+      <div class="actions">
+        <span class="badge ${it.open?'b-open':'b-closed'}">${it.open?'공개':'비공개'}</span>
+        <button class="mini" onclick="togglePublic('${sec}',${it.id})">${it.open?'비공개로':'공개로'}</button>
+        <button class="mini danger" onclick="removeItem('${sec}',${it.id})">삭제</button>
+      </div>
+    </div>`).join('');
+}
+function togglePublic(sec,id){
+  const it=state[sec].find(x=>x.id===id); if(it){ it.open=!it.open; render(sec); }
+}
+function removeItem(sec,id){
+  if(!confirm('이 항목을 삭제할까요?')) return;
+  state[sec]=state[sec].filter(x=>x.id!==id); render(sec);
+}
+function addItem(sec){
+  let title,meta,body,open;
+  if(sec==='reviews'){
+    const n=val('rv-name'),t=val('rv-title');
+    if(!n||!t){ alert('신청자와 보고서 제목을 입력하세요.'); return; }
+    title=t; meta='신청자 '+n; body=val('rv-body'); open=chk('rv-open');
+    clearFields(['rv-name','rv-title','rv-body']); document.getElementById('rv-open').checked=false;
+  } else if(sec==='seminars'){
+    const t=val('sm-title'),d=val('sm-date');
+    if(!t||!d){ alert('설명회 제목과 일정을 입력하세요.'); return; }
+    const p=val('sm-place'); title=t; meta=d+(p?' · '+p:''); body=val('sm-body'); open=chk('sm-open');
+    clearFields(['sm-title','sm-date','sm-place','sm-body']); document.getElementById('sm-open').checked=false;
+  } else if(sec==='testimonials'){
+    const n=val('ts-name'),b=val('ts-body');
+    if(!n||!b){ alert('작성자와 후기 내용을 입력하세요.'); return; }
+    const c=val('ts-child'); title=n+(c?' · '+c:''); meta=val('ts-result')||'후기'; body=b; open=chk('ts-open');
+    clearFields(['ts-name','ts-child','ts-body','ts-result']); document.getElementById('ts-open').checked=false;
+  }
+  state[sec].unshift({id:Date.now(), title, meta, body, open});
+  render(sec);
+}
+
+['reviews','seminars','testimonials'].forEach(render);
+</script>
+</body>
+</html>
