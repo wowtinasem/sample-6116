@@ -244,7 +244,7 @@ footer{background:var(--navy-d);color:#9FB0C6;padding:60px 0 30px}
 .modal .brand .logo{justify-content:center;font-size:20px}
 .modal .brand .sub{font-size:13px;color:var(--muted);margin-top:6px}
 .tabs{display:flex;margin:22px 0 22px;border-bottom:1px solid var(--line)}
-.tab{flex:1;text-align:center;font-size:15px;font-weight:600;padding:12px 0;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s}
+.tab{flex:1;text-align:center;font-size:14px;font-weight:600;padding:12px 4px;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap}
 .tab.on{color:var(--navy);border-bottom-color:var(--navy)}
 .pane{display:none}.pane.on{display:block;animation:fade .3s}
 @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
@@ -645,16 +645,11 @@ footer{background:var(--navy-d);color:#9FB0C6;padding:60px 0 30px}
       <div class="tabs">
         <div class="tab on" id="tabLogin" onclick="switchTab('login')">로그인</div>
         <div class="tab" id="tabSignup" onclick="switchTab('signup')">회원가입</div>
+        <div class="tab" id="tabEdit" onclick="switchTab('edit')">개인정보 수정</div>
       </div>
 
       <!-- LOGIN -->
       <div class="pane on" id="paneLogin">
-        <div class="soc-btns">
-          <button class="sbtn sb-kakao" onclick="demo()">카카오로 시작하기</button>
-          <button class="sbtn sb-naver" onclick="demo()">네이버로 시작하기</button>
-          <button class="sbtn sb-google" onclick="demo()">구글로 시작하기</button>
-        </div>
-        <div class="divider"><span>또는 이메일로</span></div>
         <div class="field"><label>이메일</label><input type="email" placeholder="name@example.com"></div>
         <div class="field"><label>비밀번호</label><input type="password" placeholder="••••••••"></div>
         <button class="submit" onclick="demo()">로그인</button>
@@ -663,17 +658,9 @@ footer{background:var(--navy-d);color:#9FB0C6;padding:60px 0 30px}
 
       <!-- SIGNUP -->
       <div class="pane" id="paneSignup">
-        <div class="soc-btns">
-          <button class="sbtn sb-kakao" onclick="demo()">카카오로 가입</button>
-          <button class="sbtn sb-naver" onclick="demo()">네이버로 가입</button>
-          <button class="sbtn sb-google" onclick="demo()">구글로 가입</button>
-        </div>
-        <div class="divider"><span>또는 이메일로</span></div>
-        <div class="row2">
-          <div class="field"><label>이름</label><input type="text" placeholder="홍길동"></div>
-          <div class="field"><label>휴대폰</label><input type="tel" placeholder="010-0000-0000"></div>
-        </div>
         <div class="field"><label>이메일</label><input type="email" placeholder="name@example.com"></div>
+        <div class="field"><label>휴대폰</label><input type="tel" placeholder="010-0000-0000"></div>
+        <div class="field"><label>가맹점명</label><input type="text" placeholder="예: OO학원"></div>
         <div class="field"><label>비밀번호</label><input type="password" placeholder="8자 이상"></div>
         <div class="field">
           <label>추천 경로 <span style="font-weight:400;color:var(--muted)">(선택)</span></label>
@@ -687,6 +674,16 @@ footer{background:var(--navy-d);color:#9FB0C6;padding:60px 0 30px}
         <div class="field ref-extra" id="refPerson-s"><label>추천인 이름 / 연락처</label><input type="text" placeholder="추천해주신 분 정보"></div>
         <button class="submit" onclick="demo()">가입하고 시작하기</button>
         <p class="modal-note">가입 시 이용약관 및 개인정보 처리방침에 동의하게 됩니다.</p>
+      </div>
+
+      <!-- EDIT PROFILE -->
+      <div class="pane" id="paneEdit">
+        <div class="field"><label>이메일</label><input type="email" placeholder="name@example.com"></div>
+        <div class="field"><label>휴대폰</label><input type="tel" placeholder="010-0000-0000"></div>
+        <div class="field"><label>가맹점명</label><input type="text" placeholder="예: OO학원"></div>
+        <div class="field"><label>새 비밀번호 <span style="font-weight:400;color:var(--muted)">(변경 시에만 입력)</span></label><input type="password" placeholder="변경하지 않으려면 비워두세요"></div>
+        <button class="submit" onclick="demo()">변경사항 저장</button>
+        <p class="modal-note">개인정보는 본인만 열람·수정할 수 있으며 안전하게 보호됩니다.</p>
       </div>
     </div>
   </div>
@@ -756,11 +753,13 @@ document.addEventListener('keydown',e=>{ if(e.key==='Escape') document.querySele
 
 /* ===== Tabs ===== */
 function switchTab(t){
-  const L=t==='login';
-  document.getElementById('tabLogin').classList.toggle('on',L);
-  document.getElementById('tabSignup').classList.toggle('on',!L);
-  document.getElementById('paneLogin').classList.toggle('on',L);
-  document.getElementById('paneSignup').classList.toggle('on',!L);
+  const map={login:'Login',signup:'Signup',edit:'Edit'};
+  if(!map[t]) t='login';
+  for(const key in map){
+    const on=(key===t);
+    document.getElementById('tab'+map[key]).classList.toggle('on',on);
+    document.getElementById('pane'+map[key]).classList.toggle('on',on);
+  }
 }
 
 /* ===== Referral conditional fields ===== */
