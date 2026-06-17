@@ -1,0 +1,25 @@
+<!--
+  마이페이지(개인정보 수정) 창 — index.html에서 fetch로 불러와 <body>에 주입됩니다.
+  스타일은 index.html의 공통 CSS를 그대로 사용하므로 단독으로 열면 디자인이 적용되지 않습니다.
+  (http로 서빙되는 환경에서 동작 — Netlify/로컬 서버. file:// 직접 열기에서는 fetch가 막힙니다.)
+-->
+<div class="overlay" id="myPageModal">
+  <div class="modal">
+    <div class="modal-inner">
+      <button class="modal-close" onclick="closeModal('myPageModal')">×</button>
+      <div class="brand">
+        <div class="logo"><span class="mark"><img src="jinjinlogo.png" alt="한국진로진학연구원 로고"></span><span>마이페이지</span></div>
+        <div class="sub">개인정보를 확인하고 수정하세요</div>
+      </div>
+      <div style="margin-top:24px"></div>
+      <div class="field"><label>아이디 <span style="font-weight:400;color:var(--muted)">(변경 불가)</span></label><input type="text" value="hkjinhak" disabled style="background:var(--cream);color:var(--muted);cursor:not-allowed"></div>
+      <div class="field"><label>이메일 변경</label><input type="email" placeholder="name@example.com"></div>
+      <div class="field"><label>휴대폰 번호 변경</label><input type="tel" placeholder="010-0000-0000"></div>
+      <div class="field"><label>가맹점 전화번호 변경 <span style="font-weight:400;color:var(--muted)">(선택)</span></label><input type="tel" placeholder="02-000-0000"></div>
+      <div class="field"><label>새 비밀번호 <span style="font-weight:400;color:var(--muted)">(변경 시에만 입력)</span></label><input id="mpPw" type="password" placeholder="8자 이상"></div>
+      <div class="field"><label>새 비밀번호 확인</label><input id="mpPw2" type="password" placeholder="새 비밀번호 다시 입력"></div>
+      <button class="submit" onclick="saveProfile()">변경사항 저장</button>
+      <div class="minor" style="justify-content:center"><a href="#" onclick="logout();return false">로그아웃</a></div>
+    </div>
+  </div>
+</div>
