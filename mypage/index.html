@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>마이페이지 — 한국진로진학연구원</title>
+<link rel="icon" type="image/png" href="../jinjinlogo.png">
+<link rel="apple-touch-icon" href="../jinjinlogo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css">
+<style>
+:root{
+  --navy:#0A2E5C; --navy-d:#07203F; --navy-l:#143C6E;
+  --gold:#C8A96A; --gold-d:#B5945A; --gold-ink:#3A2E12;
+  --warm:#FAF7F1; --cream:#F3EDE1; --line:#E7DFD0;
+  --slate:#5F6B7A; --ink:#2A2E35; --muted:#8A8270;
+  --serif:'Gowun Batang', serif;
+  --sans:'Pretendard', -apple-system, sans-serif;
+  --shadow-md:0 4px 16px rgba(10,46,92,.08), 0 12px 32px rgba(10,46,92,.06);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);color:var(--ink);background:var(--warm);line-height:1.7;-webkit-font-smoothing:antialiased;min-height:100vh}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+/* top bar */
+.topbar{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid var(--line);background:rgba(250,247,241,.92);backdrop-filter:blur(12px);position:sticky;top:0;z-index:10}
+.logo{font-family:var(--serif);font-size:19px;font-weight:700;color:var(--navy);letter-spacing:-.5px;display:flex;align-items:center;gap:9px}
+.logo .mark{width:32px;height:32px;border-radius:9px;background:var(--navy);display:flex;align-items:center;justify-content:center;overflow:hidden;padding:3px;flex-shrink:0}
+.logo .mark img{width:100%;height:100%;object-fit:contain;display:block}
+.back{font-size:14px;font-weight:600;color:var(--slate);padding:8px 14px;border:1px solid var(--line);border-radius:10px;transition:all .2s}
+.back:hover{border-color:var(--navy);color:var(--navy)}
+
+/* card */
+.page{display:flex;justify-content:center;padding:48px 20px 80px}
+.card{background:var(--warm);border:1px solid var(--line);border-radius:22px;width:100%;max-width:460px;box-shadow:var(--shadow-md);padding:36px 32px}
+.brand{text-align:center;margin-bottom:6px}
+.brand .logo{justify-content:center;font-size:21px}
+.brand .sub{font-size:13.5px;color:var(--muted);margin-top:8px}
+
+.field{margin-bottom:14px}
+.field label{display:block;font-size:13.5px;font-weight:600;color:var(--slate);margin-bottom:7px}
+.field input{width:100%;height:46px;border:1px solid var(--line);border-radius:11px;background:#fff;padding:0 14px;font-size:15px;font-family:var(--sans);color:var(--ink);transition:border .2s,box-shadow .2s}
+.field input:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px rgba(10,46,92,.1)}
+.field input::placeholder{color:#B6AE9C}
+.field input.invalid{border-color:#D8443B;box-shadow:0 0 0 3px rgba(216,68,59,.12)}
+.submit{width:100%;background:var(--navy);color:#fff;font-size:16px;font-weight:600;padding:15px;border:none;border-radius:12px;cursor:pointer;font-family:var(--sans);transition:all .2s;margin-top:4px}
+.submit:hover{background:var(--navy-l)}
+.minor{display:flex;justify-content:center;margin-top:16px;font-size:13px}
+.minor a{color:var(--muted)}.minor a:hover{color:var(--navy)}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="../index.html" class="logo"><span class="mark"><img src="../jinjinlogo.png" alt="한국진로진학연구원 로고"></span><span>한국진로진학연구원</span></a>
+  <a href="../index.html" class="back">← 메인으로</a>
+</div>
+
+<div class="page">
+  <div class="card">
+    <div class="brand">
+      <div class="logo"><span class="mark"><img src="../jinjinlogo.png" alt="한국진로진학연구원 로고"></span><span>마이페이지</span></div>
+      <div class="sub">개인정보를 확인하고 수정하세요</div>
+    </div>
+    <div style="margin-top:24px"></div>
+    <div class="field"><label>아이디 <span style="font-weight:400;color:var(--muted)">(변경 불가)</span></label><input type="text" value="hkjinhak" disabled style="background:var(--cream);color:var(--muted);cursor:not-allowed"></div>
+    <div class="field"><label>이메일 변경</label><input type="email" placeholder="name@example.com"></div>
+    <div class="field"><label>휴대폰 번호 변경</label><input type="tel" placeholder="010-0000-0000"></div>
+    <div class="field"><label>가맹점 전화번호 변경 <span style="font-weight:400;color:var(--muted)">(선택)</span></label><input type="tel" placeholder="02-000-0000"></div>
+    <div class="field"><label>새 비밀번호 <span style="font-weight:400;color:var(--muted)">(변경 시에만 입력)</span></label><input id="mpPw" type="password" placeholder="8자 이상"></div>
+    <div class="field"><label>새 비밀번호 확인</label><input id="mpPw2" type="password" placeholder="새 비밀번호 다시 입력"></div>
+    <button class="submit" onclick="saveProfile()">변경사항 저장</button>
+    <div class="minor"><a href="#" onclick="logout();return false">로그아웃</a></div>
+  </div>
+</div>
+
+<script>
+function saveProfile(){
+  const pw=document.getElementById('mpPw'), pw2=document.getElementById('mpPw2');
+  [pw,pw2].forEach(i=>i.classList.remove('invalid'));
+  if(pw.value || pw2.value){
+    if(pw.value.length<8){ pw.classList.add('invalid'); pw.focus(); alert('새 비밀번호는 8자 이상이어야 합니다.'); return; }
+    if(pw.value!==pw2.value){ pw2.classList.add('invalid'); pw2.focus(); alert('새 비밀번호가 일치하지 않습니다.'); return; }
+  }
+  alert('변경사항이 저장되었습니다. (데모)');
+}
+function logout(){
+  alert('로그아웃되었습니다. (데모)');
+  location.href='../index.html';
+}
+</script>
+</body>
+</html>
