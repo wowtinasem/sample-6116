@@ -16,6 +16,9 @@
   --gold:#C8A96A; --gold-d:#B5945A; --gold-ink:#3A2E12;
   --warm:#FAF7F1; --cream:#F3EDE1; --line:#E7DFD0;
   --slate:#5F6B7A; --ink:#2A2E35; --muted:#8A8270;
+  --green-bg:#E8F2EC; --green-tx:#2E7D5B;
+  --amber-bg:#FBF0DA; --amber-tx:#8A5B12;
+  --gray-bg:#EFEBE2; --gray-tx:#6B675E;
   --serif:'Gowun Batang', serif;
   --sans:'Pretendard', -apple-system, sans-serif;
   --shadow-md:0 4px 16px rgba(10,46,92,.08), 0 12px 32px rgba(10,46,92,.06);
@@ -33,23 +36,62 @@ img{max-width:100%;display:block}
 .back{font-size:14px;font-weight:600;color:var(--slate);padding:8px 14px;border:1px solid var(--line);border-radius:10px;transition:all .2s}
 .back:hover{border-color:var(--navy);color:var(--navy)}
 
-/* card */
-.page{display:flex;justify-content:center;padding:48px 20px 80px}
-.card{background:var(--warm);border:1px solid var(--line);border-radius:22px;width:100%;max-width:460px;box-shadow:var(--shadow-md);padding:36px 32px}
-.brand{text-align:center;margin-bottom:6px}
-.brand .logo{justify-content:center;font-size:21px}
-.brand .sub{font-size:13.5px;color:var(--muted);margin-top:8px}
+/* shell */
+.mp-shell{max-width:1020px;margin:0 auto;padding:34px 20px 80px;display:grid;grid-template-columns:248px 1fr;gap:24px;align-items:start}
 
+/* sidebar */
+.mp-side{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;position:sticky;top:88px}
+.uinfo{display:flex;align-items:center;gap:11px;padding:6px 6px 16px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.uinfo .av{width:42px;height:42px;border-radius:50%;background:var(--navy);color:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0}
+.uinfo .nm{font-weight:700;color:var(--navy);font-size:15px;line-height:1.3}
+.uinfo .id{font-size:12.5px;color:var(--muted)}
+.mp-menu{list-style:none;display:flex;flex-direction:column;gap:4px}
+.mp-menu button{width:100%;text-align:left;background:none;border:none;font-family:inherit;font-size:14.5px;font-weight:600;color:var(--slate);padding:12px 14px;border-radius:10px;cursor:pointer;transition:all .2s}
+.mp-menu button:hover{background:var(--cream);color:var(--navy)}
+.mp-menu button.on{background:var(--navy);color:#fff}
+.mp-logout{margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.mp-logout a{display:block;text-align:center;font-size:13.5px;color:var(--muted);padding:8px}
+.mp-logout a:hover{color:var(--navy)}
+
+/* content */
+.mp-content{background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px 30px 34px;box-shadow:var(--shadow-md);min-height:420px}
+.panel{display:none;animation:fade .3s}
+.panel.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+.panel-head{margin-bottom:22px}
+.panel-head h2{font-family:var(--serif);font-size:22px;color:var(--navy);font-weight:700}
+.panel-head p{font-size:13.5px;color:var(--muted);margin-top:4px}
+
+/* list */
+.list{display:flex;flex-direction:column;gap:10px}
+.list-item{display:flex;justify-content:space-between;align-items:center;gap:14px;border:1px solid var(--line);border-radius:12px;padding:15px 16px;transition:border-color .2s,box-shadow .2s}
+.list-item:hover{border-color:var(--gold);box-shadow:var(--shadow-md)}
+.list-item .ti{font-weight:600;color:var(--ink);font-size:15px}
+.list-item .meta{font-size:12.5px;color:var(--muted);margin-top:3px}
+.badge{font-size:12px;font-weight:700;padding:5px 11px;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.b-done{background:var(--green-bg);color:var(--green-tx)}
+.b-prog{background:var(--amber-bg);color:var(--amber-tx)}
+.b-temp{background:var(--gray-bg);color:var(--gray-tx)}
+.empty{text-align:center;color:var(--muted);font-size:14px;padding:48px 0}
+
+/* form (개인정보 수정) */
 .field{margin-bottom:14px}
 .field label{display:block;font-size:13.5px;font-weight:600;color:var(--slate);margin-bottom:7px}
 .field input{width:100%;height:46px;border:1px solid var(--line);border-radius:11px;background:#fff;padding:0 14px;font-size:15px;font-family:var(--sans);color:var(--ink);transition:border .2s,box-shadow .2s}
 .field input:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px rgba(10,46,92,.1)}
 .field input::placeholder{color:#B6AE9C}
 .field input.invalid{border-color:#D8443B;box-shadow:0 0 0 3px rgba(216,68,59,.12)}
-.submit{width:100%;background:var(--navy);color:#fff;font-size:16px;font-weight:600;padding:15px;border:none;border-radius:12px;cursor:pointer;font-family:var(--sans);transition:all .2s;margin-top:4px}
+.submit{width:100%;background:var(--navy);color:#fff;font-size:16px;font-weight:600;padding:15px;border:none;border-radius:12px;cursor:pointer;font-family:var(--sans);transition:all .2s;margin-top:6px}
 .submit:hover{background:var(--navy-l)}
-.minor{display:flex;justify-content:center;margin-top:16px;font-size:13px}
-.minor a{color:var(--muted)}.minor a:hover{color:var(--navy)}
+.form-max{max-width:460px}
+
+@media(max-width:720px){
+  .mp-shell{grid-template-columns:1fr;gap:16px}
+  .mp-side{position:static}
+  .mp-menu{flex-direction:row;flex-wrap:wrap}
+  .mp-menu button{width:auto;flex:1 1 auto}
+  .mp-content{padding:24px 20px 28px}
+}
 </style>
 </head>
 <body>
@@ -59,25 +101,73 @@ img{max-width:100%;display:block}
   <a href="../index.html" class="back">← 메인으로</a>
 </div>
 
-<div class="page">
-  <div class="card">
-    <div class="brand">
-      <div class="logo"><span class="mark"><img src="../jinjinlogo.png" alt="한국진로진학연구원 로고"></span><span>마이페이지</span></div>
-      <div class="sub">개인정보를 확인하고 수정하세요</div>
+<div class="mp-shell">
+  <!-- 왼쪽 메뉴 -->
+  <aside class="mp-side">
+    <div class="uinfo">
+      <div class="av">진</div>
+      <div><div class="nm">hkjinhak 님</div><div class="id">마이페이지</div></div>
     </div>
-    <div style="margin-top:24px"></div>
-    <div class="field"><label>아이디 <span style="font-weight:400;color:var(--muted)">(변경 불가)</span></label><input type="text" value="hkjinhak" disabled style="background:var(--cream);color:var(--muted);cursor:not-allowed"></div>
-    <div class="field"><label>이메일 변경</label><input type="email" placeholder="name@example.com"></div>
-    <div class="field"><label>휴대폰 번호 변경</label><input type="tel" placeholder="010-0000-0000"></div>
-    <div class="field"><label>가맹점 전화번호 변경 <span style="font-weight:400;color:var(--muted)">(선택)</span></label><input type="tel" placeholder="02-000-0000"></div>
-    <div class="field"><label>새 비밀번호 <span style="font-weight:400;color:var(--muted)">(변경 시에만 입력)</span></label><input id="mpPw" type="password" placeholder="8자 이상"></div>
-    <div class="field"><label>새 비밀번호 확인</label><input id="mpPw2" type="password" placeholder="새 비밀번호 다시 입력"></div>
-    <button class="submit" onclick="saveProfile()">변경사항 저장</button>
-    <div class="minor"><a href="#" onclick="logout();return false">로그아웃</a></div>
-  </div>
+    <ul class="mp-menu">
+      <li><button class="on" data-panel="profile" onclick="showPanel('profile')">개인정보 수정</button></li>
+      <li><button data-panel="reports" onclick="showPanel('reports')">저장한 보고서 목록</button></li>
+      <li><button data-panel="reviews" onclick="showPanel('reviews')">첨삭신청 목록</button></li>
+      <li><button data-panel="seminars" onclick="showPanel('seminars')">입시설명회 신청목록</button></li>
+    </ul>
+    <div class="mp-logout"><a href="#" onclick="logout();return false">로그아웃</a></div>
+  </aside>
+
+  <!-- 오른쪽 콘텐츠 -->
+  <section class="mp-content">
+    <!-- 개인정보 수정 -->
+    <div class="panel on" id="panel-profile">
+      <div class="panel-head"><h2>개인정보 수정</h2><p>계정 정보를 확인하고 수정하세요.</p></div>
+      <div class="form-max">
+        <div class="field"><label>아이디 <span style="font-weight:400;color:var(--muted)">(변경 불가)</span></label><input type="text" value="hkjinhak" disabled style="background:var(--cream);color:var(--muted);cursor:not-allowed"></div>
+        <div class="field"><label>이메일 변경</label><input type="email" placeholder="name@example.com"></div>
+        <div class="field"><label>휴대폰 번호 변경</label><input type="tel" placeholder="010-0000-0000"></div>
+        <div class="field"><label>가맹점 전화번호 변경 <span style="font-weight:400;color:var(--muted)">(선택)</span></label><input type="tel" placeholder="02-000-0000"></div>
+        <div class="field"><label>새 비밀번호 <span style="font-weight:400;color:var(--muted)">(변경 시에만 입력)</span></label><input id="mpPw" type="password" placeholder="8자 이상"></div>
+        <div class="field"><label>새 비밀번호 확인</label><input id="mpPw2" type="password" placeholder="새 비밀번호 다시 입력"></div>
+        <button class="submit" onclick="saveProfile()">변경사항 저장</button>
+      </div>
+    </div>
+
+    <!-- 저장한 보고서 목록 -->
+    <div class="panel" id="panel-reports">
+      <div class="panel-head"><h2>저장한 보고서 목록</h2><p>주제탐구 생성기로 작성·저장한 보고서입니다.</p></div>
+      <div class="list">
+        <div class="list-item"><div><div class="ti">일상 속 화학 변화 관찰하기</div><div class="meta">저장일 2026-05-12 · 중학생</div></div><span class="badge b-done">작성완료</span></div>
+        <div class="list-item"><div><div class="ti">삼투압 원리와 생활 속 적용</div><div class="meta">저장일 2026-04-28 · 고등 EASY</div></div><span class="badge b-done">작성완료</span></div>
+        <div class="list-item"><div><div class="ti">기후 데이터로 본 도시 열섬 해법</div><div class="meta">저장일 2026-03-15 · 고등 HARD</div></div><span class="badge b-temp">임시저장</span></div>
+      </div>
+    </div>
+
+    <!-- 첨삭신청 목록 -->
+    <div class="panel" id="panel-reviews">
+      <div class="panel-head"><h2>첨삭신청 목록</h2><p>전문 컨설턴트에게 신청한 보고서 첨삭 내역입니다.</p></div>
+      <div class="list">
+        <div class="list-item"><div><div class="ti">생명과학 탐구 보고서 첨삭</div><div class="meta">신청일 2026-05-20</div></div><span class="badge b-done">첨삭완료</span></div>
+        <div class="list-item"><div><div class="ti">화학 실험 보고서 첨삭</div><div class="meta">신청일 2026-05-02</div></div><span class="badge b-prog">진행중</span></div>
+      </div>
+    </div>
+
+    <!-- 입시설명회 신청목록 -->
+    <div class="panel" id="panel-seminars">
+      <div class="panel-head"><h2>입시설명회 신청목록</h2><p>신청한 입시 설명회 내역입니다.</p></div>
+      <div class="list">
+        <div class="list-item"><div><div class="ti">2027 의약학 계열 입시 전략 설명회</div><div class="meta">일정 2026-06-25 14:00 · 온라인</div></div><span class="badge b-prog">신청완료</span></div>
+        <div class="list-item"><div><div class="ti">예비 고1 학생부 로드맵 설명회</div><div class="meta">일정 2026-05-30 · 강남 본원</div></div><span class="badge b-done">참석완료</span></div>
+      </div>
+    </div>
+  </section>
 </div>
 
 <script>
+function showPanel(key){
+  document.querySelectorAll('.mp-menu button').forEach(b=>b.classList.toggle('on', b.dataset.panel===key));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on', p.id==='panel-'+key));
+}
 function saveProfile(){
   const pw=document.getElementById('mpPw'), pw2=document.getElementById('mpPw2');
   [pw,pw2].forEach(i=>i.classList.remove('invalid'));
